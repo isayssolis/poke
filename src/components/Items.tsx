@@ -5,10 +5,10 @@ import Image from "next/image";
 import {Suspense} from "react";
 import SearchForm from "@/components/Search";
 
-function ExtraData({ pokemonid }: { pokemonid: string }) {
+function ExtraData({ pokemonid }) {
     // esperar data
-    let [ataque, setAtaque] = useState(null)
-    let [defensa, setDefensa] = useState(null)
+    const [ataque, setAtaque] = useState(null)
+    const [defensa, setDefensa] = useState(null)
 
     useEffect(() => {
         fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonid}/`)
@@ -38,7 +38,7 @@ export default function Items ({items}) {
 
 
     const handleSearch = (word) => {
-        let lowerCase = word.toLowerCase();
+        const lowerCase = word.toLowerCase();
         setSearchWord(lowerCase);
     }
 
@@ -46,7 +46,7 @@ export default function Items ({items}) {
     const onSort = ()=>{
         //SORT alfabetico...
         const reverseOrder = sortOrder ? 1 : -1
-        let sorted = list.sort(function (a, b) {
+        const sorted = list.sort(function (a, b) {
             if (typeof a.name === 'string') {
                 return a.name.localeCompare(b.name) * reverseOrder;
             }else{
