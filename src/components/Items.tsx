@@ -38,7 +38,7 @@ export default function Items ({items}) {
 
 
     const handleSearch = (word) => {
-        let lowerCase = word.toLowerCase();
+        const lowerCase = word.toLowerCase();
         setSearchWord(lowerCase);
     }
 
@@ -46,7 +46,7 @@ export default function Items ({items}) {
     const onSort = ()=>{
         //SORT alfabetico...
         const reverseOrder = sortOrder ? 1 : -1
-        let sorted = list.sort(function (a, b) {
+        const sorted = list.sort(function (a, b) {
             if (typeof a.name === 'string') {
                 return a.name.localeCompare(b.name) * reverseOrder;
             }else{
