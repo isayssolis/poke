@@ -5,7 +5,7 @@ import Image from "next/image";
 import {Suspense} from "react";
 import SearchForm from "@/components/Search";
 
-function ExtraData({ pokemonid }) {
+function ExtraData({ pokemonid }: { pokemonid: string }) {
     // esperar data
     const [ataque, setAtaque] = useState(null)
     const [defensa, setDefensa] = useState(null)
@@ -19,7 +19,7 @@ function ExtraData({ pokemonid }) {
                 setAtaque(data.stats[4].base_stat)
                 setDefensa(data.stats[3].base_stat)
             })
-    },[])
+    })
     return (
         <ul>
             <li key={ataque+1}>Ataque:{ataque}</li>
@@ -38,7 +38,7 @@ export default function Items ({items}) {
 
 
     const handleSearch = (word) => {
-        const lowerCase = word.toLowerCase();
+        let lowerCase = word.toLowerCase();
         setSearchWord(lowerCase);
     }
 
@@ -46,7 +46,7 @@ export default function Items ({items}) {
     const onSort = ()=>{
         //SORT alfabetico...
         const reverseOrder = sortOrder ? 1 : -1
-        const sorted = list.sort(function (a, b) {
+        let sorted = list.sort(function (a, b) {
             if (typeof a.name === 'string') {
                 return a.name.localeCompare(b.name) * reverseOrder;
             }else{
