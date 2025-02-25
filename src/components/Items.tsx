@@ -5,7 +5,7 @@ import Image from "next/image";
 import {Suspense} from "react";
 import SearchForm from "@/components/Search";
 
-function ExtraData({ id }: string) {
+function ExtraData({ id }: string | null) {
     // esperar data
     const [ataque, setAtaque] = useState(null)
     const [defensa, setDefensa] = useState(null)
