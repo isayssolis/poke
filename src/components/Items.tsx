@@ -5,7 +5,7 @@ import Image from "next/image";
 import {Suspense} from "react";
 import SearchForm from "@/components/Search";
 
-function ExtraData({ id }: string | null) {
+function ExtraData({ id }:{id:string}) {
     // esperar data
     const [ataque, setAtaque] = useState(null)
     const [defensa, setDefensa] = useState(null)
@@ -78,7 +78,7 @@ export default function Items ({items}) {
                     height="100"
                 />
                 {it.name}
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div>Cargando...</div>}>
                     <ExtraData id={i+1} />
                 </Suspense>
             </div>
@@ -92,7 +92,7 @@ export default function Items ({items}) {
                 <button
                     className="w-full mt-2 text-white bg-blue-700 hover:bg-blue-800 text-lg rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                     onClick={onSort}>
-                    Ordenar alfabeticamente
+                    Orden alfabético
                 </button>
             </div>
             <br/>
