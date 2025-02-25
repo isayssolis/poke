@@ -7,8 +7,8 @@ import SearchForm from "@/components/Search";
 
 function ExtraData({ id }:{id:string}) {
     // esperar data
-    const [ataque, setAtaque] = useState(null)
-    const [defensa, setDefensa] = useState(null)
+    const [ataque, setAtaque] = useState<number | null>(null)
+    const [defensa, setDefensa] = useState<number | null>(null)
 
     useEffect(() => {
         fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
