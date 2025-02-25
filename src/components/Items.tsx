@@ -5,13 +5,13 @@ import Image from "next/image";
 import {Suspense} from "react";
 import SearchForm from "@/components/Search";
 
-function ExtraData({ pokemonid }: { pokemonid: string }) {
+function ExtraData({ id }: string) {
     // esperar data
     const [ataque, setAtaque] = useState(null)
     const [defensa, setDefensa] = useState(null)
 
     useEffect(() => {
-        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonid}/`)
+        fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
             .then(response => response.json())
             // 4. Setting *dogImage* to the image url that we received from the response above
             .then(data => {
@@ -72,14 +72,14 @@ export default function Items ({items}) {
             <div className="card" key={it.name}>
                 <Image
                     src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i+1}.svg`}
-                    alt="External Image"
+                    alt="pokemon"
                     unoptimized
                     width="100"
                     height="100"
                 />
                 {it.name}
                 <Suspense fallback={<div>Loading...</div>}>
-                    <ExtraData pokemonid={i+1} />
+                    <ExtraData id={i+1} />
                 </Suspense>
             </div>
         )
